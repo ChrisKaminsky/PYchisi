@@ -1,0 +1,41 @@
+Składowe projektu
+
+    własny pomysł na program ;)
+    opis projektu (1-2 akapity)+ diagram klas utworzony przed rozpoczęciem implementacji;
+    prezentacja pomysłu wraz z diagramem klas podczas pracowni (5 pkt)
+    pliki źródłowe i skompilowane (10 pkt);
+    dokumentacja zawierająca: spis klas wraz z opisem (5 pkt).
+
+
+Co z tym zrobić
+
+
+    Swój pomysł na projekt i diagram klas prezentujecie podczas zajęć. Zwykle wystarcza ok 15-20 min. Termin ustalacie z prowadzącym pracownię.
+    Dodatkowo opis projektu wraz z diagramem przesyłacie na SKOS
+    Zrealizowany projekt (pliki źródłowe, dokumentacja, aktualny diagram klas) wysyłacie na SKOS. Prowadzący może ustalić własne zasady odbioru projektów.
+
+Jak to zrobić
+
+
+ad. 1
+Można skorzystać z zamieszczonych pomysłów i rozwinąć je. Można też samemu wymyślić. Nie musi to być kompletny program. Można zrealizować też jakiś kompletny fragment większej całości.
+
+ad. 2
+Opis nie musi być długi. Narzędzie dowolne: txt, doc, odt, latex, pdf
+
+ad. 3
+O diagramach opowiem na 11 wykładzie. Do rysowania można użyć przeglądarkowych narzędzi typu diagrams.net czy umlet.com. Dostępny jest też program Visual Paradigm oparty o środowisko Java.
+
+ad. 4
+Język programowania dowolny (nie tylko Java, C# czy Ruby) ale ma być obiektowy. Narzędzia/IDE dowolne.
+
+ad. 5
+można wykorzystać narzędzia do generowania dokumentacji z plików źródłowych i komentarzy.
+
+Terminy
+
+23 maja: opis projektu i diagram (wysłanie na SKOS)
+
+20 czerwca: projekt (wysłanie na SKOS)
+
+Prezentacje: do uzgodnienia z prowadzącym pracownie

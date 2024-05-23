@@ -1,0 +1,11 @@
+PYchisi to implementacja znanej gry planszowej "Chińczyk" w pythonie.
+Nazwa projektu pochodzi od starożytnej hinduskiej gry o nazwie "Pachisi" na której bazuje gra chińczyk
+
+Zasady gry są bazowane na zasadach ze strony: https://zasadygry.wpengine.com/chinczyk-zasady-gry/
+Do zarządzania projektem utworzyłem także repozytorium na githubie: https://github.com/ChrisKaminsky/PYchisi
+
+Na początku tworzony będzie obiekt klasy Menu, który wyświetli na ekranie tytuł oraz pozwoli na wybranie początkowych ustawień gry, takich jak ilość graczy lokalnych oraz tych kontrolowanych przez AI. Po wybraniu ustawień tworzony jest obiekt GameLoop który będzie kontrolował logikę gry.
+
+W podklasach klasy Player będzie przechowywana informacja o ilości pionków w bazie danego gracza. Metoda move() w klasie Playable będzie oczekiwała inputu gracza jaki wykonać ruch, natomiast metoda ta w podklasie AI będzie automatycznie wykonywała optymalny ruch.
+
+Pozycje pionków wszystkich graczy zapisywane są w obiekcie klasy Board który implementuje metody do dodania/zdjęcia pionka z planszy, czy zmiany pozycji pionka znajdującego się już na niej. Obiekt Board przekazywany jest do obiektu Klasy UI która implementuje metody rysowania planszy na ekranie, oraz rysowania zapytań o input użytkownika.

@@ -1,1 +1,3 @@
-print("This is a test commit :)")
+import __hello__
+
+__hello__.main()
