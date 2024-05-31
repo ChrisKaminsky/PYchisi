@@ -1,3 +1,4 @@
-import __hello__
+from menu import *
 
-__hello__.main()
+test = Menu(35,150)
+print(test.run())
