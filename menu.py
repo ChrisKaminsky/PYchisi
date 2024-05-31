@@ -84,7 +84,6 @@ class Menu:
                     prompt_win.addstr(1,1,self.inputAiErrorText, curses.A_BOLD)
                     prompt_win.refresh()
 
-
             stdscr.refresh()
 
     def __inputChecker(self, arg, type):
