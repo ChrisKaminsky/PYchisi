@@ -8,7 +8,7 @@ class Menu:
         self.errorText = "Twój terminal jest zbyt mały, powiększ okno :)"
         self.inputHumanText = "Podaj liczbę graczy lokalnych (1-4)"
         self.inputHumanErrorText = "Podaj poprawną ilość graczy lokalnych (1-4)"
-        self.inputAiText = f"Podaj liczbę graczy AI(0-{4-self.numberOfHumanPlayers})"
+        self.inputAiText = f"Podaj liczbę graczy AI (0-{4-self.numberOfHumanPlayers})"
         self.inputAiErrorText = f"Podaj poprawną ilość graczy AI (0-{4-self.numberOfHumanPlayers})"
         self.title = '''
 ██████╗ ██╗   ██╗ ██████╗██╗  ██╗██╗███████╗██╗

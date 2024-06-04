@@ -1,7 +1,7 @@
 from menu import *
 
-minScreenHeight = 35
-minScreenWidth = 150
+minScreenHeight = 30
+minScreenWidth = 120
 
 game = Menu(minScreenHeight,minScreenWidth)
 numberOfPlayers = game.run()

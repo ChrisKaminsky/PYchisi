@@ -1,0 +1,24 @@
+board =
+[ [(2,30),[#]], ]
+
+splaszczona plansza ma 40 pol
+
+spawn 1 = 0
+spawn 2 = 10
+spawn 3 = 20
+spawn 4 = 30
+
+player bedzie mial pole z liczba pol ktore preszedl jak przekroczy 39 ruchow wygrywa
+
+[((5, 1), []), ((5, 3), []), ((5, 5), []), ((5, 7), []), ((5, 9), []), ((4, 9), []), ((3, 9), []), ((2, 9), []), ((1, 9), []), ((1, 11), []), ((1, 13), []), ((2, 13), []), ((3, 13), []), ((4, 13), []), ((5, 13), []), ((5, 15), []), ((5, 17), []), ((5, 19), []), ((5, 21), []), ((7, 21), []), ((9, 21), []), ((9, 19), []), ((9, 17), []), ((9, 15), []), ((9, 13), []), ((10, 13), []), ((11, 13), []), ((12, 13), []), ((13, 13), []), ((13, 11), []), ((13, 9), []), ((12, 9), []), ((11, 9), []), ((10, 9), []), ((9, 9), []), ((9, 7), []), ((9, 5), []), ((9, 3), []), ((9, 1), []), ((7, 1), [])]
+Tak wyglada plansza
+
+ui ma pole visual board gdzie ma 2-wymiarowa tablice ze znakami reprezentujacymi plansze
+oraz metody do aktualizacji planszy na podstawie pola board.cords oraz metode generujaca z tablicy string
+
+nastepnie trzeba by dodac do klasy board pola z bazami poszczegolnych graczy
+
+moze slownik klucz = nr gracza
+wartosc = kordy jego bazy , ilosc w bazie
+
+player ma tablice onBoard w ktorej ma kordy pozycji swoich pionkow bez nazw
