@@ -8,8 +8,6 @@ class Menu:
         self.errorText = "Twój terminal jest zbyt mały, powiększ okno :)"
         self.inputHumanText = "Podaj liczbę graczy lokalnych (1-4)"
         self.inputHumanErrorText = "Podaj poprawną ilość graczy lokalnych (1-4)"
-        self.inputAiText = f"Podaj liczbę graczy AI (0-{4-self.numberOfHumanPlayers})"
-        self.inputAiErrorText = f"Podaj poprawną ilość graczy AI (0-{4-self.numberOfHumanPlayers})"
         self.title = '''
 ██████╗ ██╗   ██╗ ██████╗██╗  ██╗██╗███████╗██╗
 ██╔══██╗╚██╗ ██╔╝██╔════╝██║  ██║██║██╔════╝██║
@@ -71,7 +69,7 @@ class Menu:
             if self.numberOfHumanPlayers != 4:
                 prompt_win.erase()
                 prompt_win.box()
-                prompt_win.addstr(1, 1, self.inputAiText, curses.A_BOLD)
+                prompt_win.addstr(1, 1, f"Podaj liczbę graczy AI (0-{4-self.numberOfHumanPlayers})", curses.A_BOLD)
                 prompt_win.refresh()
 
                 while True:
@@ -81,7 +79,7 @@ class Menu:
                         break
                     prompt_win.erase()
                     prompt_win.box()
-                    prompt_win.addstr(1,1,self.inputAiErrorText, curses.A_BOLD)
+                    prompt_win.addstr(1,1,f"Podaj poprawną ilość graczy AI (0-{4-self.numberOfHumanPlayers})", curses.A_BOLD)
                     prompt_win.refresh()
 
             stdscr.refresh()

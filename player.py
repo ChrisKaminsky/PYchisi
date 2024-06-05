@@ -1,28 +1,43 @@
 from abc import ABC, abstractmethod
 
 class Player():
-    def __init__(self, symbol,startpos,endpos):
-        self.pawnsInBase = 4
+    def __init__(self, symbol, name, startpos, endpos):
+        self.symbol = symbol
+        self.name = name
         self.startPos = startpos
         self.endPos = endpos
-        self.symbol = symbol
-        self.onBoard = []
+
+        self.pawnsInBase = 4
+        self.onBoard = []# tu bede zapisywal pionki w postaci [pos,pokonanaOdleglosc]
     @abstractmethod
     def move(self):
         pass
 
-    def getFromBase(self):
+    #ta tez chyba
+    def getFromBase(self,board):
         if self.pawnsInBase > 0:
+            board.cords[self.startPos][1].append(self.symbol)
             self.pawnsInBase -= 1
-            self.onBoard.append(self.startPos)
+            self.onBoard.append([self.startPos,0])
 
 
-    def returnToBase(self,pos):
+    #w tych dwoch metodach yrzeba jeszcze usunac z board cords
+    def returnToBase(self,pos,board):
         if self.pawnsInBase < 4:
             self.pawnsInBase += 1
-            self.onBoard.remove(pos)
+            board.cords[pos][1].pop(0)
+            self.onBoard = [item for item in self.onBoard if item[0] != pos]
 
-    def winPawn(self,pos):
-        self.winningPawns += 1
-        self.onBoard.remove(pos)
+    def movePawn(self,odp,cube,board):
+        board.cords[self.onBoard[odp][0]][1].pop(0)  # usun symbol z miejsca
+        board.cords[(self.onBoard[odp][0] + cube) % len(board.cords)][1].append(self.symbol)  # dodaj symbol na odpowiednie pole
+        self.onBoard[odp][0] = (self.onBoard[odp][0] + cube) % len(board.cords)  # zaktualizuj indeks w self.onBoard
+        self.onBoard[odp][1] += cube  # zaktualizuj droge w self.onBoard
+
+    #ta metoda jest dobra
+    def winPawn(self,index,board,ui):
+        board.cords[index][1].pop(0)
+        self.onBoard = [item for item in self.onBoard if item[0] != index]
+        ui.visualBoard[self.endPos[-1][0]][self.endPos[-1][1]] = self.symbol
+        self.endPos.pop(-1)
 

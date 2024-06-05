@@ -28,6 +28,7 @@ class UI():
                        "$": 2,
                        "@": 3,
                        "&": 4}
+        self.key = None
 
 
 
@@ -66,6 +67,7 @@ class UI():
         self.promptType = promptType #0 - komunikat, 1 - pytanie
 
         curses.wrapper(self.__drawScreen)
+        return self.key
 
     def __drawScreen(self, stdscr):
         curses.init_pair(1,curses.COLOR_RED, curses.COLOR_BLACK)
@@ -83,7 +85,7 @@ class UI():
         stdscr.attroff(YELLOW)
 
         board_win = curses.newwin(20, 30,5,20)
-        prompt_win = curses.newwin(5,25,5,60)
+        prompt_win = curses.newwin(5,30,5,60)
         stdscr.refresh()
 
         board_win.erase()
@@ -109,16 +111,11 @@ class UI():
             prompt_win.refresh()
             stdscr.refresh()
             stdscr.getch()
-            # sleep(2)
+            # sleep(3)
         elif self.promptType == 1:
             prompt_win.addstr(0,0,self.prompt,YELLOW)
             board_win.refresh()
             prompt_win.refresh()
             stdscr.refresh()
-            stdscr.getch()
-            key = stdscr.getkey()
-
-
-
-
-
+            # stdscr.getch()
+            self.key = stdscr.getkey()
