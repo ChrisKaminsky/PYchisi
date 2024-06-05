@@ -22,3 +22,6 @@ moze slownik klucz = nr gracza
 wartosc = kordy jego bazy , ilosc w bazie
 
 player ma tablice onBoard w ktorej ma kordy pozycji swoich pionkow bez nazw
+
+prompt types:
+1 - Komunikat, Gracz Niebieski

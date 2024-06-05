@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
 class Player():
-    def __init__(self, iden,startpos):
+    def __init__(self, symbol,startpos,endpos):
         self.pawnsInBase = 4
         self.startPos = startpos
-        self.winningPawns = 0
-        self.id = iden
+        self.endPos = endpos
+        self.symbol = symbol
         self.onBoard = []
     @abstractmethod
     def move(self):
