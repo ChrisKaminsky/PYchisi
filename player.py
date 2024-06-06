@@ -16,17 +16,17 @@ class Player():
     #ta tez chyba
     def getFromBase(self,board):
         if self.pawnsInBase > 0:
-            board.cords[self.startPos][1].append(self.symbol)
             self.pawnsInBase -= 1
+            board.cords[self.startPos][1].append(self.symbol)
             self.onBoard.append([self.startPos,0])
 
 
     #w tych dwoch metodach yrzeba jeszcze usunac z board cords
-    def returnToBase(self,pos,board):
+    def returnToBase(self,index,board):
         if self.pawnsInBase < 4:
             self.pawnsInBase += 1
-            board.cords[pos][1].pop(0)
-            self.onBoard = [item for item in self.onBoard if item[0] != pos]
+            board.cords[index][1].pop(0)
+            self.onBoard = [item for item in self.onBoard if item[0] != index]
 
     def movePawn(self,odp,cube,board):
         board.cords[self.onBoard[odp][0]][1].pop(0)  # usun symbol z miejsca

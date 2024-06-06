@@ -58,42 +58,21 @@ class Playable(Player):
                     ui.drawScreen(board,f"Gracz {self.name}, doszedł do końca planszy",0)
                     return None
 
-            # ui.drawScreen(board, f"Debug {str(board.cords[self.onBoard[0][0]][1])}", 0)
-            # Teraz nie wywala ale znika pionek ktory powinen zbijac
+            new_index = (self.onBoard[odp][0]+cube) % len(board.cords)
             try:
                 #if pole na ktore chce isc jest zajete przez jeden z moich pionkow
-                if board.cords[(self.onBoard[odp][0]+cube)%len(board.cords)][1][0] == self.symbol:
+                if board.cords[new_index][1][0] == self.symbol:
                     ui.drawScreen(board, "Wykonano nieprawidłowy ruch, dwa pionki nie mogą być na tym samym polu", 0)
                     return None
                 #if pole na ktore chce isc jest zajete przez pionek wroga
                 elif len(board.cords[(self.onBoard[odp][0]+cube)%len(board.cords)][1]) > 0:
                     enemy = board.cords[(self.onBoard[odp][0] + cube) % len(board.cords)][1][0]
                     self.movePawn(odp,cube,board)
-                    return (enemy,(self.onBoard[odp][0]+cube)%len(board.cords))
+                    return (enemy, new_index)
             except:
                 self.movePawn(odp, cube, board)
                 return None
 
-            # if board.cords[(self.onBoard[odp][0]+cube)%len(board.cords)][1] == self.symbol:
-            #     ui.drawScreen(board,"Wykonano nieprawidłowy ruch, dwa pionki nie mogą być na tym samym polu",0)
-            #     return None
-            #
-            # elif (len(board.cords[(self.onBoard[odp][0]+cube)%len(board.cords)][1]) > 0) and board.cords[(self.onBoard[odp][0]+cube)%len(board.cords)][1] != self.symbol: # to crashuje
-            #     enemy = board.cords[(self.onBoard[odp][0]+cube)%len(board.cords)][1][0]
-            #     self.movePawn(odp,cube,board)
-            #     return (enemy,(self.onBoard[odp][0]+cube)%len(board.cords))
-                # board.cords[self.onBoard[odp][0]][1].pop(0) #usuwa symbol z miejsca
-                # self.onBoard[odp][0] = (self.onBoard[odp][0] + cube) % len(board.cords) #aktualziune onBoard
-                # self.onBoard[odp][1] += cube
-                # enemySymbol = board.cords[(self.onBoard[odp][0] + cube) % len(board.cords)][1]
-                # board.cords[(self.onBoard[odp][0] + cube) % len(board.cords)][1].pop(0) #usuwa symbol z pola (trzeba jeszcze powiedziec o tym drugiemu graczowi)
-                # board.cords[(self.onBoard[odp][0] + cube) % len(board.cords)][1].append(self.symbol) #dodaj symbol na odpowiednie pole
-                # return (enemySymbol,self.onBoard[odp][0])
-
-
-            # else: # wolne pole mozna isc
-            #     self.movePawn(odp,cube,board)
-            #     return None
 
 
 

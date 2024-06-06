@@ -47,6 +47,7 @@ class GameLoop():
                 kill = gracz.move(self.board,self.ui)
                 if kill != None: # kill to krotka ("#",indeksOnBoard)
                     self.players[self.playersId[kill[0]]].returnToBase(kill[1],self.board)
+                    self.ui.drawScreen(self.board,"Zbiłeś pionka przeciwnika",0)
                 if len(gracz.endPos) == 0:
                     Break = True
                     break
