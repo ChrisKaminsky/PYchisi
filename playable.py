@@ -17,7 +17,6 @@ class Playable(Player):
         cube = randint(1,6)
         ui.drawScreen(board,f"Wylosowana liczba to {cube}",0)
 
-        #jak inny gracz stoi ci na spawnie to sie nie pojawisz zmienic to
         if (cube == 6 or cube == 1) and len(board.cords[self.startPos][1]) == 0 and self.pawnsInBase > 0:
             odp = ui.drawScreen(board, self.baseQuestion, 1)
             while True:
@@ -29,6 +28,22 @@ class Playable(Player):
                     break
                 else:
                     odp = ui.drawScreen(board, f"Kliknij T, jeśli chcesz wystawić pionek, lub N żeby wybrać ruch innym pionkiem", 1)
+
+        #nie testowalem ale powinno byc git, to naprawia ->       #jak inny gracz stoi ci na spawnie to sie nie pojawisz zmienic to
+
+        elif (cube == 6 or cube == 1) and len(board.cords[self.startPos][1]) > 0 and self.pawnsInBase > 0:
+            if board.cords[self.startPos][1][0] != self.symbol:
+                odp = ui.drawScreen(board, self.baseQuestion, 1)
+                enemy = board.cords[self.startPos][1][0]
+                while True:
+                    if odp == "t":
+                        self.getFromBase(board)
+                        ui.drawScreen(board, f"Gracz {self.name}, wystawił pionek z bazy.", 0)
+                        return (enemy, self.startPos)
+                    elif odp == "n":
+                        break
+                    else:
+                        odp = ui.drawScreen(board,f"Kliknij T, jeśli chcesz wystawić pionek, lub N żeby wybrać ruch innym pionkiem",1)
 
         if len(self.onBoard) > 0:
             pionkiIndeks = [item[0] for item in self.onBoard]

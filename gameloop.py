@@ -3,6 +3,7 @@ from ui import *
 from player import *
 from playable import *
 from ai import *
+import curses
 
 class GameLoop():
     def __init__(self,human,ai):
@@ -16,8 +17,8 @@ class GameLoop():
                         "&":30}
         self.endPos = {"#":[(7,4),(7,6),(7,8),(7,10)],
                         "$":[(3,11),(4,11),(5,11),(6,11)],
-                        "@":[(7,12),(7,14),(7,16),(7,18)],
-                        "&":[(8,11),(9,11),(10,11),(11,11)]}
+                        "@":[(7,18),(7,16),(7,14),(7,12)],
+                        "&":[(11,11),(10,11),(9,11),(8,11)]}
         self.playersId = {"#": 0,
                          "$": 1,
                          "@": 2,
@@ -26,6 +27,7 @@ class GameLoop():
         self.players = []
         self.board = Board()
         self.ui = UI()
+        self.winner = ""
 
         for i in range(human):
             symbol = self.avilablePlayers[0]
@@ -36,10 +38,23 @@ class GameLoop():
             self.players.append(Ai(symbol,self.colorCodes[symbol],self.startPos[symbol],self.endPos[symbol]))
             self.avilablePlayers.pop(0)
 
+    def __endScreen(self, stdscr):
+        stdscr.erase()
+        height, width = stdscr.getmaxyx()
+        curses.init_pair(1,curses.COLOR_YELLOW, curses.COLOR_BLACK)
+        YELLOW_AND_BLACK = curses.color_pair(1)
+        win_str = f"Wygrał gracz {self.winner}!!!"
+
+        center_y = height // 2
+        center_x = (width - len(win_str)) // 2
+        stdscr.erase()
+        stdscr.addstr(center_y,center_x, win_str, YELLOW_AND_BLACK | curses.A_BLINK)
+        stdscr.refresh()
+        stdscr.getch()
+
 
     def run(self):
         Break = False
-        #plan jest taki zeby iterowac po klasie players i za kazdym razem odpalac move, sprawdzac tez czy ktos juz nie wygrywa
         while True:
             if Break:
                 break
@@ -50,5 +65,7 @@ class GameLoop():
                     self.ui.drawScreen(self.board,"Zbiłeś pionka przeciwnika",0)
                 if len(gracz.endPos) == 0:
                     Break = True
+                    self.winner = self.colorCodes[gracz.symbol]
                     break
+        curses.wrapper(self.__endScreen)
 
