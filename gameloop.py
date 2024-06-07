@@ -54,17 +54,15 @@ class GameLoop():
 
 
     def run(self):
-        Break = False
-        while True:
-            if Break:
-                break
+        loop = True
+        while loop:
             for gracz in self.players:
                 kill = gracz.move(self.board,self.ui)
                 if kill != None: # kill to krotka ("#",indeksOnBoard)
                     self.players[self.playersId[kill[0]]].returnToBase(kill[1],self.board)
                     self.ui.drawScreen(self.board,"Zbiłeś pionka przeciwnika",0)
                 if len(gracz.endPos) == 0:
-                    Break = True
+                    loop = False
                     self.winner = self.colorCodes[gracz.symbol]
                     break
         curses.wrapper(self.__endScreen)
