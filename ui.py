@@ -1,5 +1,4 @@
 import curses
-from time import sleep
 class UI():
     def __init__(self):
         self.visualBoard = self.__generatePrimaryVisualBoard()
@@ -31,9 +30,6 @@ class UI():
         self.key = None
 
 
-
-
-
     def __generatePrimaryVisualBoard(self):
         board = []
         plik = open("drawings/board.txt", "r")
@@ -46,13 +42,6 @@ class UI():
             board.append(temp)
         plik.close()
         return board
-
-    #this is useless
-    # def getBoardString(self):
-    #     str = ""
-    #     for linijka in self.visualBoard:
-    #         str = str + "".join(linijka) + "\n"
-    #     return str
 
     def generateVisualBoard(self,board):
         for element in board.cords:
@@ -91,11 +80,6 @@ class UI():
         board_win.erase()
         prompt_win.erase()
 
-        #color test
-        # self.visualBoard[5][7] = "#"
-        # self.visualBoard[5][9] = "$"
-        # self.visualBoard[4][9] = "@"
-        # self.visualBoard[3][9] = "&"
         for i, linijka in enumerate(self.visualBoard):
             for j, znak in enumerate(linijka):
                 if znak in self.colors.keys():
@@ -111,7 +95,6 @@ class UI():
             prompt_win.refresh()
             stdscr.refresh()
             stdscr.getch()
-            # sleep(3)
         elif self.promptType == 1:
             prompt_win.addstr(0,0,self.prompt,YELLOW)
             board_win.refresh()

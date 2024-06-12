@@ -8,8 +8,6 @@ class Playable(Player):
         self.wrongMove = "Niedozwolny ruch, 2 pionki nie mogą być na jednym polu"
         self.baseQuestion = "Czy chcesz wystawić pionek z bazy? [T,N]"
 
- #                          0 - komunikat, 1 - pytanie
-#                           self.onBoard ma itemki w postaci [4,2] gdzie 4 to indeks board, a 2 to dlugosc pokonana
 
     def move(self,board,ui):
         ui.drawScreen(board,f"Gracz {self.name}, ilość pionków w bazie: {self.pawnsInBase}",0)
@@ -28,8 +26,6 @@ class Playable(Player):
                     break
                 else:
                     odp = ui.drawScreen(board, f"Kliknij T, jeśli chcesz wystawić pionek, lub N żeby wybrać ruch innym pionkiem", 1)
-
-        #nie testowalem ale powinno byc git, to naprawia ->       #jak inny gracz stoi ci na spawnie to sie nie pojawisz zmienic to
 
         elif (cube == 6 or cube == 1) and len(board.cords[self.startPos][1]) > 0 and self.pawnsInBase > 0:
             if board.cords[self.startPos][1][0] != self.symbol:

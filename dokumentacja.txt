@@ -1,0 +1,35 @@
+PYchisi to implementacja znanej gry planszowej "Chińczyk" w pythonie.
+Nazwa projektu pochodzi od starożytnej hinduskiej gry o nazwie "Pachisi" na której bazuje gra chińczyk
+
+Do zarządzania projektem utworzyłem także repozytorium na githubie: https://github.com/ChrisKaminsky/PYchisi
+
+Interfejs projektu jest rysowany w terminalu za pomocą biblioteki curses
+Jeżeli wyświetla nam się komunikat o za małym okienku terminala, należy powiększyć okno i uruchomić program ponownie
+
+Wymagania:
+- Python 3.12
+- Biblioteka curses:
+    - na Linuxie biblioteka powinna być zainstalowana domyślnie
+    - na Windowsie należy pobrać ją uruchamiając polecenie "pip install windows-curses"
+
+Program był testowany na systemie Fedora 40, gdzie wszystkie wymagania są zainstalowane z systemem.
+
+Uruchomienie programu:
+Należy otworzyć folder z plikami gry w dowolnym terminalu i uruchomić ją poleceniem
+- python main.py
+
+Dokumentacja klas:
+- Klasa Menu - implementuje metodę run() odpowiadającą za rysowanie ekranu tytułowego oraz zapytanie użytkownika o ilość graczy lokalnych oraz tych kontrolowanych przez komputer. Metoda ta zwraca krotkę zawierającą informacje o ilości poszczególnych typów graczy.
+
+- Klasa Gameloop - 
+W swoich atrybutach zawiera informacje potrzebne do zainicjalizowania obiektów poszczególnych graczy. Odpowiada za główną pętlę tworzącą grę. Tworzy listę obiektów Playable oraz Ai i iteruje po nich za każdym razem wywołując metodę move() poszczególnych graczy, odpowiada także za wywoływanie metody returnToBase(), w przypadku zbicia pionka innego gracza. Posiada także metodę wyświetlania ekranu końcowego.
+
+- Klasa Board - Posiada w swoich atrybutach tablice zawierające informacje o współrzędnych danego pola na wizualnej reprezentacji planszy oraz znak pionka znajdującego się na niej, przykładowy element tej listy jest postaci ((5, 1), ["#"]). Tablica ta jest generowana z listy współrzędnych w pliku drawings/cords.txt
+
+- Klasa UI - Zawiera w swoich atrybutach współrzędne które mają być rysowane w innych kolorach niż reszta. Metoda  __generatePrimaryVisualBoard() generuje 2-wymiarową tablice zawierającą wizualną reprezentacje planszy do gry z pliku drawings/board.txt, jest ona zapisywana w atrybucie visualBoard. Metoda generateVisualBoard() aktualizuje wizualną reprezentacje planszy zmieniając pozycje pionków na podstawie informacji z obiektu Board. Metoda drawScreen odpowiada za rysowanie planszy oraz wyświetlania komunikatów o ruchach graczy czy zapytań do użytkownika o kolejny ruch.
+
+- Klasa Player - Jest klasą po której, dziedziczą klasy Playable oraz Ai. W swoich atrybutach gracz zawiera swoją nazwę oraz znak np. "Czerwony" "#" oraz informację, z jakiego pola startuje. Implementuje metody getFromBase(), returnToBase() odpowiadające za wystawianie pionka na swoje pole startowe oraz zdejmowanie go z planszy w wypadku zbicia przez innego gracza. movePawn() odpowiada za przesunięcie pionka na planszy o odpowiednio wylosowaną ilość pól, a metoda winPawn() odpowiada za zdjęcie pionka z planszy i przeniesienie go do bezpiecznych pól, w przypadku gdy pionek pokonał już całą planszę.
+
+- Klasa Playable - Jest podklasą klasy Player. Nadpisuje ona metodę move() odpowiadającą za zapytanie użytkownika o rzut kostką, wybrania czy chcemy wyjść pionkiem z bazy oraz którym pionkiem chcemy wykonać ruch. Aktualizuje ona pozycje pionka w obiekcie klasy Board, a do rysowania zapytań wykorzystuje obiekt klasy Ui.
+
+- Klasa Ai - Jest podklasą klasy Player. Podobnie do klasy Playable nadpisuje ona metodę move() jednak różni się ona tym, że decyzję są podejmowane za pomocą generatora liczb losowych.

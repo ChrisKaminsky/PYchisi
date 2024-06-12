@@ -8,7 +8,7 @@ class Player():
         self.endPos = endpos
 
         self.pawnsInBase = 4
-        self.onBoard = []# tu bede zapisywal pionki w postaci [pos,pokonanaOdleglosc]
+        self.onBoard = []
     @abstractmethod
     def move(self):
         pass
@@ -21,7 +21,6 @@ class Player():
             self.onBoard.append([self.startPos,0])
 
 
-    #w tych dwoch metodach yrzeba jeszcze usunac z board cords
     def returnToBase(self,index,board):
         if self.pawnsInBase < 4:
             self.pawnsInBase += 1
